@@ -1,4 +1,4 @@
-%% 本项目提供了一个基于 PyTorch 的车辆轨迹预测完整方案，融合 BiLSTM 时序编码、GCN 空间交互、多头注意力与意图感知解码，在 NGSIM 和 highD 数据集上实现多模态轨迹生成。仓库包含训练脚本 `train5f.py`（自动混合 MSE/NLL 损失）、评估脚本 `evaluate5f.py`（输出 RMSE 或 NLL）、模型实现 `model5f_mult.py`、数据加载器 `loader2.py` 及配置文件 `config.py`。只需把百度网盘（提取码 4p44）下载的 `.mat` 数据放入 `data/` 目录，运行 `python train5f.py` 即可开始训练，结果自动保存至 `checkpoint/true_1/`，再执行 `python evaluate5f.py` 查看验证集性能。
+%% 本项目提供了一个基于 PyTorch 的车辆轨迹预测完整方案，融合 BiLSTM 时序编码、GCN 空间交互、多头注意力与意图感知解码，在 NGSIM 和 highD 数据集上实现多模态轨迹生成。仓库包含训练脚本 `train5f.py`（自动混合 MSE/NLL 损失）、评估脚本 `evaluate5f.py`（输出 RMSE 或 NLL）、模型实现 `model5f_mult.py`、数据加载器 `loader2.py` 及配置文件 `config.py`。只需把下载的 `.mat` 数据放入 `data/` 目录，运行 `python train5f.py` 即可开始训练，结果自动保存至 `checkpoint/true_1/`，再执行 `python evaluate5f.py` 查看验证集性能。
 ## the ngsim dataset
 the dataset can download from this 
 link：https://pan.baidu.com/s/1ur34Au8h3b3WZFM5a2RWOw (4p44) 
@@ -54,19 +54,6 @@ for k = 1:6
     end
 end
 
-vehTrajs{1} = containers.Map;
-vehTrajs{2} = containers.Map;
-vehTrajs{3} = containers.Map;
-vehTrajs{4} = containers.Map;
-vehTrajs{5} = containers.Map;
-vehTrajs{6} = containers.Map;
-
-vehTimes{1} = containers.Map;
-vehTimes{2} = containers.Map;
-vehTimes{3} = containers.Map;
-vehTimes{4} = containers.Map;
-vehTimes{5} = containers.Map;
-vehTimes{6} = containers.Map;
 
 %% Parse fields (listed above):
 disp('Parsing fields...')
